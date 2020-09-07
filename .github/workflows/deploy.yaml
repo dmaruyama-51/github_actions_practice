@@ -18,7 +18,7 @@ jobs:
 
       - name: Install Packages # 関連するパッケージをインストール
         run: |
-          cd "/home/runner/work/github_actions_practice/github_actions_practice/auto-deploy-test"
+          cd ./auto-deploy-test
           npm install --global firebase-tools # npm でないと、エラー出るので注意
           yarn install # 関連パッケージのインストール
 
