@@ -18,13 +18,11 @@ jobs:
 
       - name: Install Packages # 関連するパッケージをインストール
         run: |
-          cd ./auto-deploy-test
           npm install --global firebase-tools # npm でないと、エラー出るので注意
           yarn install # 関連パッケージのインストール
 
       - name: Build # Nuxt ビルド
         run: |
-          yarn add yarn
           yarn generate
 
       - name: Deploy to Firebase # デプロイ

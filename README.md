@@ -1,4 +1,4 @@
-# auto-deploy-test
+# auto-deploy
 
 ## Build Setup
 
