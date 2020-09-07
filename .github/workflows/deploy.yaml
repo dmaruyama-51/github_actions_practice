@@ -22,7 +22,9 @@ jobs:
           yarn install # 関連パッケージのインストール
       - name: Build # Nuxt ビルド
         run: |
+          cd auto-deploy-test
           yarn generate
+          cd ../
 
       - name: Deploy to Firebase # デプロイ
         env:
