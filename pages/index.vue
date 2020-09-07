@@ -3,7 +3,7 @@
     <div>
       <Logo />
       <h1 class="title">
-        auto-deploy
+        new title
       </h1>
       <div class="links">
         <a
