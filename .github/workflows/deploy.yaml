@@ -1,0 +1,31 @@
+name: Auto Deploy
+on:
+  push:
+    branches: [master] # ブランチを master に指定
+jobs:
+  build:
+    runs-on: ubuntu-latest # 実行環境
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v1 # master ブランチをチェックアウト
+        with:
+          ref: "master"
+
+      - name: Setup Node
+        uses: actions/setup-node@v1 # Node の環境構築
+        with:
+          node-version: "10.x"
+
+      - name: Install Packages # 関連するパッケージをインストール
+        run: |
+          npm install --global firebase-tools # npm でないと、エラー出るので注意
+          yarn install # 関連パッケージのインストール
+      - name: Build # Nuxt ビルド
+        run: |
+          yarn generate
+
+      - name: Deploy to Firebase # デプロイ
+        env:
+          PROJECT_NAME: github-actions-practice # firebase のプロジェクトID
+        run: |
+          firebase deploy --project ${PROJECT_NAME} --token ${{secrets.FIREBASE_TOKEN}} --non-interactive
